@@ -28,20 +28,24 @@ namespace Grading_the_students
             return "nome dello studente: " + NameStudent + ", voto: " + GradeStudent;
         }
 
-        public string GetNameStudentWithGradeMax(List<Student> ListOfStudents)
+        public List<string> GetNameStudentWithGradeMax(List<Student> ListOfStudents)
         {
-            string nameStudent = "";
-            int maxGrade = ListOfStudents[0].GradeStudent;
+            List<string> listNameStudentWithGradeMax = new();
+            int maxGrade = ListOfStudents[1].GradeStudent;
 
             foreach (var student in ListOfStudents)
             {
                 if (student.GradeStudent > maxGrade)
                 {
                     maxGrade = student.GradeStudent;
-                    nameStudent = student.NameStudent;
+                    listNameStudentWithGradeMax.Add(student.NameStudent);
+                }
+                else if(student.GradeStudent == maxGrade)
+                {
+                    listNameStudentWithGradeMax.Add(student.NameStudent);
                 }
             }
-            return nameStudent;
+            return listNameStudentWithGradeMax;
         }
 
         public List<string> PrintNameStudentOrderAlfhabetical(List<Student> StudentList)
