@@ -25,31 +25,36 @@ foreach (Student name in StudentList)
     Console.WriteLine(name.GetStudent());
 }
 
-double TotalGrade = 0;
+double TotalGrade = 0.0;
 
 foreach (Student student in StudentList)
 {
-    TotalGrade = (TotalGrade += student.GradeStudent) / StudentList.Count;
+    TotalGrade += student.GradeStudent;
 }
 
-Console.WriteLine("\nla media totale è " + TotalGrade);
+double averageGrade= TotalGrade / StudentList.Count;
+Console.WriteLine("\nla media totale è " + averageGrade);
 
 Console.Write("\nlo/a studente/ssa con il voto più alto è: ");
 
-string NameStudent = students.GetNameStudentWithGradeMax(StudentList);
-Console.WriteLine(NameStudent);
+List<string> NameStudent = students.GetNameStudentWithGradeMax(StudentList);
+foreach(string names in NameStudent)
+{
+    Console.Write(names + ", ");
+}
+
+Console.WriteLine();
 
 int NewGradeTheStudent = student4.SetGrade(5);      //andando a sostituire "student4" con un altro studente, si può cambiare il voto
 Console.WriteLine($"E' stato cambiato il voto dello studente {student4.NameStudent}, in: " + NewGradeTheStudent);
 
 Console.WriteLine("--------------------------------------");
 
-Console.WriteLine("sto stampando i nomi delgi studenti al contrario:");
+Console.WriteLine("sto stampando i nomi delgi studenti in ordine alfabetico:");
 
 List<string> ciao = students.PrintNameStudentOrderAlfhabetical(StudentList);
 
-foreach(string s in ciao)
+foreach (string s in ciao)
 {
     Console.WriteLine(s);
 }
-
